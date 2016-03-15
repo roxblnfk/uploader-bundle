@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services">
+    <services>
+        <service id="atom_uploader.orm.listener" class="Atom\Uploader\Listener\ORM\ORMListener"
+                 public="false">
+            <argument type="service" id="atom_uploader.event_handler"/>
+            <argument type="collection"/> <!-- Will be contain the properties that an instance of file reference-->
+            <argument type="collection"/> <!-- Will be contain the doctrine subscribed events-->
+            <tag name="doctrine.event_subscriber"/>
+        </service>
+
+        <service id="atom_uploader.orm.mapping_helper"
+                 class="Atom\UploaderBundle\Mapping\ORMHelper" public="false">
+            <tag name="atom_uploader.mapping.helper_repo"/>
+        </service>
+    </services>
+</container>

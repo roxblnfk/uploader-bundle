@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services">
+    <services>
+        <service id="atom_uploader.namer.unique_id" class="Atom\Uploader\Naming\UniqueNamer" public="false">
+            <tag name="atom_uploader.namer_repo" strategy="unique_id"/>
+        </service>
+        <service id="atom_uploader.namer.basename" class="Atom\Uploader\Naming\BasenameNamer" public="false">
+            <tag name="atom_uploader.namer_repo" strategy="basename"/>
+        </service>
+    </services>
+</container>

@@ -1,0 +1,49 @@
+{
+    "name": "atom-azimov/uploader-bundle",
+    "license": "MIT",
+    "type": "symfony-project",
+    "authors": [
+        {
+            "name": "Elbek Azimov",
+            "email": "atom.azimov@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Atom\\UploaderBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ExampleApp\\": "example-app/src/"
+        },
+        "classmap": [
+            "example-app/app/TestKernel.php",
+            "example-app/app/AppKernel.php",
+            "example-app/app/AppCache.php"
+        ]
+    },
+    "require": {
+        "php": ">=5.5.9",
+        "atom-azimov/uploader": "~1.2.0"
+    },
+    "require-dev": {
+        "symfony/symfony": "~2.0|~3.0",
+        "doctrine/orm": "^2.5",
+        "oneup/flysystem-bundle": "^1.2",
+        "doctrine/doctrine-bundle": "^1.6",
+        "doctrine/doctrine-cache-bundle": "^1.2",
+        "symfony/swiftmailer-bundle": "^2.3",
+        "symfony/monolog-bundle": "^2.8",
+        "sensio/distribution-bundle": "^5.0",
+        "sensio/framework-extra-bundle": "^3.0.2",
+        "behat/behat": "~3.@dev",
+        "phpunit/phpunit": "^5.2",
+        "twistor/flysystem-stream-wrapper": "^1.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}

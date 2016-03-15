@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+
+<!--suppress ALL, XmlHighlighting -->
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <!--<parameters>
+        <parameter key="exampleapp.example.class">ExampleApp\Example</parameter>
+    </parameters>-->
+
+    <services>
+        <service id="exampleapp.orm_upload" class="ExampleApp\Command\ORM\UploadCommand">
+            <argument>orm:upload</argument>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <tag name="console.command"/>
+        </service>
+
+        <service id="exampleapp.orm_get" class="ExampleApp\Command\ORM\GetCommand">
+            <argument>orm:get</argument>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <tag name="console.command"/>
+        </service>
+
+        <service id="exampleapp.orm_remove" class="ExampleApp\Command\ORM\RemoveCommand">
+            <argument>orm:remove</argument>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <tag name="console.command"/>
+        </service>
+
+        <service id="exampleapp.orm_update" class="ExampleApp\Command\ORM\UpdateCommand">
+            <argument>orm:update</argument>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <tag name="console.command"/>
+        </service>
+
+
+        <service id="exampleapp.orm_embeddable_upload" class="ExampleApp\Command\ORMEmbeddable\UploadCommand">
+            <argument>orm_embeddable:upload</argument>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <tag name="console.command"/>
+        </service>
+
+        <service id="exampleapp.orm_embeddable_get" class="ExampleApp\Command\ORMEmbeddable\GetCommand">
+            <argument>orm_embeddable:get</argument>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <tag name="console.command"/>
+        </service>
+
+        <service id="exampleapp.orm_embeddable_remove" class="ExampleApp\Command\ORMEmbeddable\RemoveCommand">
+            <argument>orm_embeddable:remove</argument>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <tag name="console.command"/>
+        </service>
+
+        <service id="exampleapp.orm_embeddable_update" class="ExampleApp\Command\ORMEmbeddable\UpdateCommand">
+            <argument>orm_embeddable:update</argument>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <tag name="console.command"/>
+        </service>
+    </services>
+</container>

@@ -1,0 +1,20 @@
+---
+- hosts: all
+  become: True
+  roles:
+    - {role: tersmitten.locales, tags: [locales]}
+    - {role: atom-azimov.php, tags: [php]}
+    - {role: atom-azimov.shell, tags: [shell, zsh]}
+    - {role: jdauphant.nginx, tags: [nginx]}
+    - {role: kosssi.composer, tags: [composer]}
+  pre_tasks:
+    - include: "{{playbook_dir}}/tasks/prepare_app_requirements.yml"
+
+  vars_files:
+    - ["{{playbook_dir}}/../parameters.yml", "{{playbook_dir}}/../parameters.yml.dist"]
+
+- hosts: vagrant
+  roles:
+    - {role: kamaln7.swapfile, tags: [swapfile], become: True, swapfile_size: 1G}
+  post_tasks:
+    - include: "{{ playbook_dir }}/tasks/prepare_dev.yml"

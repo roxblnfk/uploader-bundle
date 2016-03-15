@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--suppress XmlHighlighting -->
+<container xmlns="http://symfony.com/schema/dic/services">
+    <services>
+        <service id="atom_uploader.metadata_repo" class="Atom\Uploader\Metadata\MetadataRepo">
+            <argument type="collection"/> <!-- Will be contain metadata ids-->
+            <argument type="collection"/> <!-- Will be contain metadata identity map -->
+        </service>
+
+        <service id="atom_uploader.upload_handler" public="true" class="Atom\Uploader\Handler\UploadHandler">
+            <argument type="service" id="atom_uploader.metadata_repo"/>
+            <argument type="service" id="atom_uploader.property_handler"/>
+            <argument type="service" id="atom_uploader.lazy_loader"/>
+            <argument type="service" id="atom_uploader.namer_repo"/>
+            <argument type="service" id="atom_uploader.dispatcher"/>
+        </service>
+
+        <service id="atom_uploader.filesystem_adapter_repo" class="Atom\Uploader\Filesystem\FilesystemAdapterRepo">
+            <argument type="collection"/> <!-- will be contained with filesystem adapters. -->
+        </service>
+
+        <!-- private services. -->
+        <service id="atom_uploader.namer_repo" class="Atom\Uploader\Naming\NamerRepo" public="false">
+            <argument type="collection"/> <!-- will be contained with namers. -->
+        </service>
+
+        <service id="atom_uploader.event_handler" class="Atom\Uploader\Handler\EventHandler" public="false">
+            <!-- Will be used for lazy loading the 'atom_uploader.upload_handler' service. -->
+            <argument type="service" id="atom_uploader.lazy_loader"/>
+        </service>
+
+        <!-- this service will be removed after DI optimization -->
+        <service id="atom_uploader.mapping.helper_repo" class="Atom\UploaderBundle\Mapping\MappingHelperRepo"
+                 public="false"/>
+        <service id="atom_uploader.mapping.default_helper" class="Atom\UploaderBundle\Mapping\DefaultMappingHelper"
+                 public="false">
+            <tag name="atom_uploader.mapping.helper_repo"/>
+        </service>
+
+        <service id="atom_uploader.dispatcher" class="Atom\UploaderBundle\Event\EventDispatcher"
+                 public="false">
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+
+        <service id="atom_uploader.property_handler" class="Atom\UploaderBundle\Handler\PropertyHandler"
+                 public="false" />
+
+        <service id="atom_uploader.lazy_loader" class="Atom\UploaderBundle\LazyLoad\LazyLoader" public="false">
+            <argument type="service" id="service_container"/>
+        </service>
+
+    </services>
+</container>

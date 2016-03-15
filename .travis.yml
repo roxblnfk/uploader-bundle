@@ -10,8 +10,8 @@ cache:
   - "$HOME/.composer/cache"
 
 install:
-  - composer self-update
-  - composer install --prefer-dist --no-interaction --dev
+  - php -r "readfile('https://getcomposer.org/installer');" | php
+  - php -d memory_limit=-1 composer.phar install --prefer-dist --no-interaction --dev
 script:
   - vendor/bin/behat -f progress
 

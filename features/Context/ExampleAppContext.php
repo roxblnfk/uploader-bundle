@@ -30,6 +30,8 @@ class ExampleAppContext implements Context, SnippetAcceptingContext
 
     private $config;
 
+    private $console;
+
     public function __construct()
     {
         $projectRoot = realpath(__DIR__ . '/../../example-app');
@@ -44,6 +46,7 @@ class ExampleAppContext implements Context, SnippetAcceptingContext
         $this->statusCode = 0;
         $this->subscribers = [];
         $this->driver = 'orm';
+        $this->console = sprintf('"%s" %s/bin/test-console', PHP_BINARY, $projectRoot);
     }
 
     /**
@@ -223,7 +226,7 @@ class ExampleAppContext implements Context, SnippetAcceptingContext
             $this->clearCache();
         }
 
-        exec(sprintf('%s/bin/test-console doctrine:schema:update --force --no-debug -e test', $this->getVar('project root')));
+        exec(sprintf('%s doctrine:schema:update --force --no-debug -e test', $this->console));
         $this->output = system($command, $this->statusCode);
         $this->outputData = [];
 
@@ -246,7 +249,7 @@ class ExampleAppContext implements Context, SnippetAcceptingContext
 
     private function clearCache()
     {
-        exec(sprintf('%s/bin/test-console cache:clear --no-warmup --no-debug -e test', $this->getVar('project root')));
+        exec(sprintf('%s cache:clear --no-warmup --no-debug -e test', $this->console));
     }
 
     private function buildCommand($action, $id = null, $file = null)
@@ -255,7 +258,7 @@ class ExampleAppContext implements Context, SnippetAcceptingContext
         $file = $this->injectVars($file);
 
         $command = [
-            sprintf('%s/bin/test-console', $this->getVar('project root')),
+            $this->console,
             sprintf('%s:%s', $this->driver, $action),
             '-e',
             'test',

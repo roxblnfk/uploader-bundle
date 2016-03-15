@@ -47,17 +47,17 @@ abstract class Command extends \Symfony\Component\Console\Command\Command
 
     final protected function configure()
     {
-        $this->addOption('with-subscriber', 's', InputArgument::IS_ARRAY, null, []);
+        $this->addArgument('with-subscriber', InputArgument::IS_ARRAY, null, []);
         $this->doConfigure();
     }
 
     private function registerSubscribers()
     {
-        if (!$this->input->hasOption('with-subscriber')) {
+        if (!$this->input->hasArgument('with-subscriber')) {
             return;
         }
 
-        $subscribers = (array)$this->input->getOption('with-subscriber');
+        $subscribers = (array)$this->input->getArgument('with-subscriber');
 
         foreach ($subscribers as $subscriberClass) {
             $subscriber = new $subscriberClass();
@@ -67,7 +67,7 @@ abstract class Command extends \Symfony\Component\Console\Command\Command
 
     protected function addFileArgument()
     {
-        $this->addArgument('file', InputArgument::REQUIRED, 'File path to upload.');
+        $this->addOption('file', 'f', InputOption::VALUE_REQUIRED, 'File path to upload.');
 
         return $this;
     }
@@ -86,7 +86,7 @@ abstract class Command extends \Symfony\Component\Console\Command\Command
 
     protected function getFile()
     {
-        $file = $this->input->getArgument('file');
+        $file = $this->input->getOption('file');
 
         if (!file_exists($file)) {
             throw new FileNotFoundException($file);

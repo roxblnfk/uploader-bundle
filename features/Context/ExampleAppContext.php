@@ -265,18 +265,18 @@ class ExampleAppContext implements Context, SnippetAcceptingContext
             '--no-debug'
         ];
 
-        foreach ($this->subscribers as $subscriber) {
-            $command[] = '--with-subscriber';
-            $command[] = $subscriber;
-        }
-
         if ($id) {
             $command[] = '--id';
             $command[] = $id;
         }
 
         if ($file) {
+            $command[] = '--file';
             $command[] = $file;
+        }
+
+        foreach ($this->subscribers as $subscriber) {
+            $command[] = $subscriber;
         }
 
         return implode(' ', $command);

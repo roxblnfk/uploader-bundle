@@ -2,17 +2,18 @@ language: php
 sudo: false
 
 php:
-- 5.6
-- 7.0
+  - 5.6
+  - 7.0
 
 cache:
   directories:
   - "$HOME/.composer/cache"
 
 install:
-- composer install --prefer-dist --no-interaction --dev
+  - composer self-update
+  - php `which composer` install --prefer-dist --no-interaction --dev
 script:
-- vendor/bin/behat -f progress
+  - vendor/bin/behat -f progress
 
 notifications:
   slack:

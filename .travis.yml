@@ -11,7 +11,7 @@ cache:
 
 install:
   - composer self-update
-  - php `which composer` install --prefer-dist --no-interaction --dev
+  - composer install --prefer-dist --no-interaction --dev
 script:
   - vendor/bin/behat -f progress
 

@@ -56,13 +56,14 @@
     },
     "scripts": {
         "test": [
-            "php example-app/bin/console cache:clear -e test --no-debug --no-warmup",
+            "@test-clear-cache",
             "php vendor/behat/behat/bin/behat -f progress"
         ],
         "fast-test": [
-            "php example-app/bin/console cache:clear -e test --no-debug --no-warmup",
+            "@test-clear-cache",
             "php vendor/behat/behat/bin/behat -f progress --tags ~@config"
         ],
+        "test-clear-cache": "php example-app/bin/console cache:clear -e test --no-debug --no-warmup",
         "cs-fix": "php vendor/fabpot/php-cs-fixer/php-cs-fixer fix",
         "phpmd": "php vendor/phpmd/phpmd/src/bin/phpmd src xml cleancode,codesize,controversial,design,naming,unusedcode"
     }

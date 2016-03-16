@@ -14,8 +14,8 @@ install:
   - php -d memory_limit=-1 composer.phar install --prefer-dist --no-interaction
 
 script:
-  - composer run-script test
-  - composer run-script phpmd
+  - php composer.phar run-script test
+  - php composer.phar run-script phpmd
 
 notifications:
   slack:

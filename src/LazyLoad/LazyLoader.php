@@ -1,8 +1,9 @@
 <?php
-
+/**
+ * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+ */
 
 namespace Atom\UploaderBundle\LazyLoad;
-
 
 use Atom\Uploader\Filesystem\FilesystemAdapterRepo;
 use Atom\Uploader\Handler\UploadHandler;
@@ -14,12 +15,10 @@ class LazyLoader implements IUploadHandlerLazyLoader, IFilesystemAdapterRepoLazy
 {
     private $container;
 
-
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
     }
-
 
     /**
      * @return FilesystemAdapterRepo

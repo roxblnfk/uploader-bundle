@@ -1,10 +1,9 @@
 <?php
 /**
- * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>
+ * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
  */
 
 namespace ExampleApp\Command\Base;
-
 
 use ExampleApp\Exception\FileNotFoundException;
 use Symfony\Component\Console\Input\InputArgument;
@@ -33,22 +32,12 @@ abstract class Command extends \Symfony\Component\Console\Command\Command
         $this->dispatcher = $dispatcher;
     }
 
-    abstract protected function doConfigure();
-
-    abstract protected function doExecute();
-
     final protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->input = $input;
         $this->output = $output;
         $this->registerSubscribers();
         $this->doExecute();
-    }
-
-    final protected function configure()
-    {
-        $this->addArgument('with-subscriber', InputArgument::IS_ARRAY, null, []);
-        $this->doConfigure();
     }
 
     private function registerSubscribers()
@@ -64,6 +53,16 @@ abstract class Command extends \Symfony\Component\Console\Command\Command
             $this->dispatcher->addSubscriber($subscriber);
         }
     }
+
+    abstract protected function doExecute();
+
+    final protected function configure()
+    {
+        $this->addArgument('with-subscriber', InputArgument::IS_ARRAY, null, []);
+        $this->doConfigure();
+    }
+
+    abstract protected function doConfigure();
 
     protected function addFileArgument()
     {
@@ -97,7 +96,7 @@ abstract class Command extends \Symfony\Component\Console\Command\Command
 
     /**
      * @param int|null $id
-     * @param array $fileReference
+     * @param array    $fileReference
      */
     protected function view($id = null, array $fileReference = null)
     {

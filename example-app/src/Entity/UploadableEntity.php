@@ -1,30 +1,28 @@
 <?php
-
+/**
+ * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+ */
 
 namespace ExampleApp\Entity;
-
 
 class UploadableEntity
 {
     /**
-     * @var int
-     */
-    private $id;
-
-    /**
      * @var \SplFileInfo|string|null
      */
     protected $fileField;
-
     /**
      * @var string|null
      */
     protected $uriField;
-
     /**
      * @var \SplFileInfo|null
      */
     protected $fileInfoField;
+    /**
+     * @var int
+     */
+    private $id;
 
     public function __construct(\SplFileInfo $file)
     {

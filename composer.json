@@ -2,6 +2,7 @@
     "name": "atom-azimov/uploader-bundle",
     "license": "MIT",
     "type": "symfony-bundle",
+    "description": "",
     "authors": [
         {
             "name": "Elbek Azimov",
@@ -39,11 +40,31 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "behat/behat": "~3.@dev",
         "phpunit/phpunit": "^5.2",
-        "twistor/flysystem-stream-wrapper": "^1.0"
+        "twistor/flysystem-stream-wrapper": "^1.0",
+        "phpmd/phpmd": "^2.4",
+        "fabpot/php-cs-fixer": "^1.11"
+    },
+    "suggest": {
+        "doctrine/doctrine-bundle": "You can use doctrine as a persistance layer for your business objects.",
+        "oneup/flysystem-bundle": "You can use flysystem as a filesystem adapter instead the local filesyytem adapter.",
+        "twistor/flysystem-stream-wrapper": "Use it if you use flsystem and want mount a filesystem at a file info resolution."
     },
     "extra": {
         "branch-alias": {
             "dev-master": "0.2.x-dev"
         }
+    },
+    "scripts": {
+        "test": [
+            "@test-clear-cache",
+            "php vendor/behat/behat/bin/behat -f progress"
+        ],
+        "fast-test": [
+            "@test-clear-cache",
+            "php vendor/behat/behat/bin/behat -f progress --tags ~@config"
+        ],
+        "test-clear-cache": "php example-app/bin/console cache:clear -e test --no-debug --no-warmup",
+        "cs-fix": "php vendor/fabpot/php-cs-fixer/php-cs-fixer fix",
+        "phpmd": "php vendor/phpmd/phpmd/src/bin/phpmd src xml cleancode,codesize,controversial,design,naming,unusedcode"
     }
 }

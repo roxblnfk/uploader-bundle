@@ -1,4 +1,7 @@
 <?php
+/**
+ * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+ */
 
 namespace Atom\UploaderBundle\DependencyInjection;
 
@@ -13,7 +16,7 @@ class AtomUploaderExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $loader = new XmlFileLoader($container, new FileLocator([
-            __DIR__ . '/../Resources/config',
+            __DIR__.'/../Resources/config',
         ]));
 
         $loader->load('services.xml');
@@ -23,7 +26,7 @@ class AtomUploaderExtension extends Extension
         $config = $this->processConfiguration(new Configuration(), $configs);
 
         foreach ($config['drivers'] as $driver) {
-            $path = sprintf(__DIR__ . '/../Resources/config/drivers/%s.xml', $driver);
+            $path = sprintf(__DIR__.'/../Resources/config/drivers/%s.xml', $driver);
 
             if (!file_exists($path)) {
                 continue;

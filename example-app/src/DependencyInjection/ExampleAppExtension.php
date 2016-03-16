@@ -1,8 +1,9 @@
 <?php
-
+/**
+ * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+ */
 
 namespace ExampleApp\DependencyInjection;
-
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -14,7 +15,7 @@ class ExampleAppExtension extends Extension
     /**
      * Loads a specific configuration.
      *
-     * @param array $configs An array of configuration values
+     * @param array            $configs   An array of configuration values
      * @param ContainerBuilder $container A ContainerBuilder instance
      *
      * @throws \InvalidArgumentException When provided tag is not defined in this extension
@@ -22,7 +23,7 @@ class ExampleAppExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $loader = new XmlFileLoader($container, new FileLocator([
-            __DIR__ . '/../Resources/config',
+            __DIR__.'/../Resources/config',
         ]));
 
         $loader->load('services.xml');

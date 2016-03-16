@@ -1,13 +1,17 @@
 <?php
-
+/**
+ * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+ */
 
 namespace Atom\UploaderBundle\Mapping;
-
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Events;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+/**
+ * @SuppressWarnings(PHPMD.LongVariable)
+ */
 class ORMHelper extends AbstractMappingHelper
 {
     public function getRealClasses(array $mappings, ContainerBuilder $container)
@@ -24,7 +28,9 @@ class ORMHelper extends AbstractMappingHelper
             foreach ($entityMetadataMap as $entityMetadata) {
                 $className = $entityMetadata->getName();
 
-                if ($entityMetadata->isEmbeddedClass || false === $this->findMappingByClassName($mappings, $className)) {
+                if ($entityMetadata->isEmbeddedClass || false === $this->findMappingByClassName($mappings,
+                        $className)
+                ) {
                     continue;
                 }
 
@@ -48,7 +54,7 @@ class ORMHelper extends AbstractMappingHelper
             Events::postUpdate,
             Events::prePersist,
             Events::postPersist,
-            Events::postFlush
+            Events::postFlush,
         ];
 
         if ($this->hasOptionInMappings($mappings, 'delete_on_remove')) {

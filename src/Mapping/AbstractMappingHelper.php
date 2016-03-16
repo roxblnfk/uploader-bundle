@@ -1,14 +1,19 @@
 <?php
-
+/**
+ * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+ */
 
 namespace Atom\UploaderBundle\Mapping;
 
 use Atom\UploaderBundle\DependencyInjection\Configuration;
 
+/**
+ * @SuppressWarnings(PHPMD.StaticAccess)
+ */
 abstract class AbstractMappingHelper implements IMappingHelper
 {
     /**
-     * @param array $mappings
+     * @param array        $mappings
      * @param array|string $options
      *
      * @return bool
@@ -29,6 +34,7 @@ abstract class AbstractMappingHelper implements IMappingHelper
     /**
      * @param array $mappings
      * @param $className
+     *
      * @return array|bool
      */
     public function findMappingByClassName(array $mappings, $className)

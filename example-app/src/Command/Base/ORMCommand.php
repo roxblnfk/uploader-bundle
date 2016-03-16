@@ -1,8 +1,9 @@
 <?php
-
+/**
+ * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+ */
 
 namespace ExampleApp\Command\Base;
-
 
 use Doctrine\ORM\EntityManagerInterface;
 use ExampleApp\Entity\UploadableEntity;
@@ -24,6 +25,7 @@ abstract class ORMCommand extends Command
      * @param string $driver
      *
      * @return UploadableEntity|object
+     *
      * @throws ObjectNotFoundException
      */
     protected function getEntity($entityClass = UploadableEntity::class, $driver = 'orm')

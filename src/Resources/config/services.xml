@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+  -->
+
 <!--suppress XmlHighlighting -->
 <container xmlns="http://symfony.com/schema/dic/services">
     <services>
@@ -43,7 +47,7 @@
         </service>
 
         <service id="atom_uploader.property_handler" class="Atom\UploaderBundle\Handler\PropertyHandler"
-                 public="false" />
+                 public="false"/>
 
         <service id="atom_uploader.lazy_loader" class="Atom\UploaderBundle\LazyLoad\LazyLoader" public="false">
             <argument type="service" id="service_container"/>

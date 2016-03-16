@@ -1,17 +1,17 @@
 <?php
-
+/**
+ * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+ */
 
 namespace Atom\UploaderBundle\Event;
 
-
+use Atom\Uploader\Event\IEventDispatcher;
 use Atom\Uploader\Event\IUploadEvent;
 use Atom\Uploader\Metadata\FileMetadata;
-use Atom\Uploader\Event\IEventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class EventDispatcher implements IEventDispatcher
 {
-
     private $dispatcher;
 
     public function __construct(EventDispatcherInterface $dispatcher)
@@ -20,9 +20,8 @@ class EventDispatcher implements IEventDispatcher
     }
 
     /**
-     * @param string $eventName
-     *
-     * @param object $fileReference
+     * @param string       $eventName
+     * @param object       $fileReference
      * @param FileMetadata $metadata
      *
      * @return IUploadEvent

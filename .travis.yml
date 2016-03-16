@@ -11,9 +11,11 @@ cache:
 
 install:
   - php -r "readfile('https://getcomposer.org/installer');" | php
-  - php -d memory_limit=-1 composer.phar install --prefer-dist --no-interaction --dev
+  - php -d memory_limit=-1 composer.phar install --prefer-dist --no-interaction
+
 script:
-  - vendor/bin/behat -f progress
+  - composer run-script test
+  - composer run-script phpmd
 
 notifications:
   slack:

@@ -1,4 +1,7 @@
 <?php
+/**
+ * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+ */
 
 namespace Atom\UploaderBundle\DependencyInjection;
 
@@ -14,7 +17,7 @@ class Configuration implements ConfigurationInterface
         $node = $treeBuilder->root('atom_uploader');
 
         // @formatter:off
-        /** @noinspection PhpUndefinedMethodInspection */
+        /* @noinspection PhpUndefinedMethodInspection */
         $node
             ->ignoreExtraKeys()
             ->addDefaultsIfNotSet()
@@ -46,7 +49,7 @@ class Configuration implements ConfigurationInterface
     {
         $defaults = self::getMappingDefaults();
         // @formatter:off
-        /** @noinspection PhpUndefinedMethodInspection */
+        /* @noinspection PhpUndefinedMethodInspection */
         $node
             ->fixXmlConfig('mapping')
             ->children()

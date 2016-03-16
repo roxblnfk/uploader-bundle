@@ -1,4 +1,7 @@
 <?php
+/**
+ * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+ */
 
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -26,11 +29,6 @@ class AppKernel extends Kernel
         }
 
         return $bundles;
-    }
-
-    public function getRootDir()
-    {
-        return __DIR__;
     }
 
     public function getCacheDir()

@@ -11,15 +11,11 @@ engines:
     enabled: true
   phpmd:
     enabled: true
-    exclude_fingerprints:
-      - 8bf399c7b1a2bc546c7576bd5d08c507
-      - 85045174d5fd6d868a1e98d3daa2cdec
-      - 575a63d4966fd7a62600df6d5d7db38e
-      - dc27607bf27889839819584e79c3acc4
-      - 311490c5ed6048ab9f69f95967355044
+
 ratings:
   paths:
     - "**.php"
+
 exclude_paths:
   - features/
   - spec/

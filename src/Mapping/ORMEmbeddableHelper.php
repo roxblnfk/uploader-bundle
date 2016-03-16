@@ -1,18 +1,23 @@
 <?php
-
+/**
+ * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+ */
 
 namespace Atom\UploaderBundle\Mapping;
-
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Events;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+/**
+ * @SuppressWarnings(PHPMD.LongVariable)
+ */
 class ORMEmbeddableHelper extends AbstractMappingHelper
 {
     /**
-     * @param array $mappings
+     * @param array            $mappings
      * @param ContainerBuilder $container
+     *
      * @return array of real classnames.
      */
     public function getRealClasses(array $mappings, ContainerBuilder $container)
@@ -63,7 +68,7 @@ class ORMEmbeddableHelper extends AbstractMappingHelper
             Events::postUpdate,
             Events::prePersist,
             Events::postPersist,
-            Events::postFlush
+            Events::postFlush,
         ];
 
         if ($this->hasOptionInMappings($mappings, 'delete_on_remove')) {

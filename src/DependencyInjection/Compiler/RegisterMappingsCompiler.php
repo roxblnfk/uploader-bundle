@@ -1,7 +1,9 @@
 <?php
+/**
+ * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+ */
 
 namespace Atom\UploaderBundle\DependencyInjection\Compiler;
-
 
 use Atom\Uploader\Metadata\FileMetadata;
 use Atom\UploaderBundle\DependencyInjection\Configuration;
@@ -14,32 +16,53 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
+/**
+ * @SuppressWarnings(PHPMD.StaticAccess)
+ */
 class RegisterMappingsCompiler implements CompilerPassInterface
 {
+    public function process(ContainerBuilder $container)
+    {
+        $helperRepo = $container->get('atom_uploader.mapping.helper_repo');
+        /** @var DefaultMappingHelper $defaultHelper */
+        $defaultHelper = $helperRepo->getHelper('default');
+
+        $config = $this->getConfig($container);
+        $mappedClasses = $this->getMappedClasses($container, $helperRepo, $defaultHelper, $config['mappings'],
+            $config['drivers']);
+        $mappings = $this->prepareMappings($config['mappings'], $mappedClasses, $defaultHelper);
+
+        if (empty($mappings)) {
+            return;
+        }
+
+        $this->registerMetadata($mappings, $container);
+        $usedFsAdapters = array_unique(array_column($mappings, 'fs_adapter'));
+        $this->registerFsAdapters($usedFsAdapters, $container);
+        $usedNamingStrategies = array_unique(array_column($mappings, 'naming_strategy'));
+        $this->registerNamers($usedNamingStrategies, $container);
+    }
+
     private function getConfig(ContainerBuilder $container)
     {
         $processor = new Processor();
         $configs = $container->getExtensionConfig('atom_uploader');
         $configs[] = [
             'mappings' => [
-                'Atom\Uploader\Model\Uploadable' => []
-            ]
+                'Atom\Uploader\Model\Uploadable' => [],
+            ],
         ];
 
         return $processor->processConfiguration(new Configuration(), $configs);
     }
 
-    private function prepareMappings(array $mappings, array $mappedClasses, DefaultMappingHelper $helper)
-    {
-        $mappedClasses = array_combine($mappedClasses, $mappedClasses);
-
-        return array_map(function ($className) use ($mappings, $helper) {
-            return $helper->findMappingByClassName($mappings, $className) ?: Configuration::getMappingDefaults();
-        }, $mappedClasses);
-    }
-
-    private function getMappedClasses(ContainerBuilder $container, MappingHelperRepo $helperRepo, IMappingHelper $defaultHelper, array $mappings, array $drivers)
-    {
+    private function getMappedClasses(
+        ContainerBuilder $container,
+        MappingHelperRepo $helperRepo,
+        IMappingHelper $defaultHelper,
+        array $mappings,
+        array $drivers
+    ) {
         $mappedClasses = [];
 
         foreach ($drivers as $driver) {
@@ -50,25 +73,13 @@ class RegisterMappingsCompiler implements CompilerPassInterface
         return $mappedClasses;
     }
 
-    public function process(ContainerBuilder $container)
+    private function prepareMappings(array $mappings, array $mappedClasses, DefaultMappingHelper $helper)
     {
-        $helperRepo = $container->get('atom_uploader.mapping.helper_repo');
-        /** @var DefaultMappingHelper $defaultHelper */
-        $defaultHelper = $helperRepo->getHelper('default');
+        $mappedClasses = array_combine($mappedClasses, $mappedClasses);
 
-        $config = $this->getConfig($container);
-        $mappedClasses = $this->getMappedClasses($container, $helperRepo, $defaultHelper, $config['mappings'], $config['drivers']);
-        $mappings = $this->prepareMappings($config['mappings'], $mappedClasses, $defaultHelper);
-
-        if (empty($mappings)) {
-            return;
-        }
-
-        $this->registerMetadata($mappings, $container);
-        $usedFsAdapters = array_unique(array_column($mappings, 'fs_adapter'));
-        $this->registerFsAdapters($usedFsAdapters, $container);
-        $usedNamingStrategies = array_unique(array_column($mappings, 'naming_strategy'));;
-        $this->registerNamers($usedNamingStrategies, $container);
+        return array_map(function ($className) use ($mappings, $helper) {
+            return $helper->findMappingByClassName($mappings, $className) ?: Configuration::getMappingDefaults();
+        }, $mappedClasses);
     }
 
     private function registerMetadata(array $mappings, ContainerBuilder $container)

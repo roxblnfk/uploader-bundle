@@ -1,7 +1,9 @@
 <?php
+/**
+ * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+ */
 
 namespace Atom\UploaderBundle;
-
 
 use Atom\UploaderBundle\DependencyInjection\Compiler\RegisterMappingHelpersCompiler;
 use Atom\UploaderBundle\DependencyInjection\Compiler\RegisterMappingsCompiler;
@@ -10,6 +12,9 @@ use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+/**
+ * @SuppressWarnings(PHPMD.StaticAccess)
+ */
 class AtomUploaderBundle extends Bundle
 {
     public function build(ContainerBuilder $container)
@@ -24,9 +29,10 @@ class AtomUploaderBundle extends Bundle
 
     private function registerORMEmbeddableMappings(ContainerBuilder $container)
     {
-        $modelDir = realpath(__DIR__ . '/Resources/config/orm-embeddable-mappings');
+        $modelDir = realpath(__DIR__.'/Resources/config/orm-embeddable-mappings');
         $mappings = [$modelDir => 'Atom\Uploader\Model\Embeddable'];
-        $doctrineMappingsPass = DoctrineOrmMappingsPass::createXmlMappingDriver($mappings, ['atom_uploader.model_manager_name'], 'atom_uploader.driver_type_orm_embeddable');
+        $doctrineMappingsPass = DoctrineOrmMappingsPass::createXmlMappingDriver($mappings,
+            ['atom_uploader.model_manager_name'], 'atom_uploader.driver_type_orm_embeddable');
         $container->addCompilerPass($doctrineMappingsPass);
     }
 }

@@ -20,6 +20,11 @@ class RegisterMappingsCompiler implements CompilerPassInterface
     {
         $processor = new Processor();
         $configs = $container->getExtensionConfig('atom_uploader');
+        $configs[] = [
+            'mappings' => [
+                'Atom\Uploader\Model\Uploadable' => []
+            ]
+        ];
 
         return $processor->processConfiguration(new Configuration(), $configs);
     }

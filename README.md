@@ -7,3 +7,5 @@
 [![Latest Unstable Version](https://poser.pugx.org/atom-azimov/uploader-bundle/v/unstable)](https://packagist.org/packages/atom-azimov/uploader-bundle)
 [![Total Downloads](https://poser.pugx.org/atom-azimov/uploader-bundle/downloads)](https://packagist.org/packages/atom-azimov/uploader-bundle)
 [![Dependency Status](https://www.versioneye.com/user/projects/56e910044e714c004f4d09be/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56e910044e714c004f4d09be)
+[![Code Climate](https://codeclimate.com/github/atom-azimov/uploader-bundle/badges/gpa.svg)](https://codeclimate.com/github/atom-azimov/uploader-bundle)
+[![Test Coverage](https://codeclimate.com/github/atom-azimov/uploader-bundle/badges/coverage.svg)](https://codeclimate.com/github/atom-azimov/uploader-bundle/coverage)

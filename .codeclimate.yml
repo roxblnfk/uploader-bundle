@@ -4,13 +4,14 @@ engines:
     config:
       languages:
       - php
+    exclude_fingerprints:
+      - 07c7560c53d94594ecb6eb907939edd5
   fixme:
     enabled: true
   phpmd:
     enabled: true
     exclude_fingerprints:
       - 8bf399c7b1a2bc546c7576bd5d08c507
-      - 07c7560c53d94594ecb6eb907939edd5
       - 85045174d5fd6d868a1e98d3daa2cdec
       - c8e2165a03ccf4a385fadb110e871578
 ratings:

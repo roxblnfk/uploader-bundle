@@ -18,10 +18,10 @@ class ORMHelper extends AbstractMappingHelper
         $mappedClasses = [];
 
         foreach ($managers as $manager) {
-            /** @var \Doctrine\ORM\Mapping\ClassMetadata[] $entityMetadataCollection */
-            $entityMetadataCollection = $manager->getMetadataFactory()->getAllMetadata();
+            /** @var \Doctrine\ORM\Mapping\ClassMetadata[] $entityMetadataMap */
+            $entityMetadataMap = $manager->getMetadataFactory()->getAllMetadata();
 
-            foreach ($entityMetadataCollection as $entityMetadata) {
+            foreach ($entityMetadataMap as $entityMetadata) {
                 $className = $entityMetadata->getName();
 
                 if ($entityMetadata->isEmbeddedClass || false === $this->findMappingByClassName($mappings, $className)) {
@@ -59,9 +59,9 @@ class ORMHelper extends AbstractMappingHelper
             $events[] = Events::postLoad;
         }
 
-        $doctrineSubscriberDef = $container->findDefinition('atom_uploader.orm.listener');
-        $doctrineSubscriberDef->replaceArgument(1, $fileReferenceEntities);
-        $doctrineSubscriberDef->replaceArgument(2, $events);
+        $definition = $container->findDefinition('atom_uploader.orm.listener');
+        $definition->replaceArgument(1, $fileReferenceEntities);
+        $definition->replaceArgument(2, $events);
     }
 
     /**

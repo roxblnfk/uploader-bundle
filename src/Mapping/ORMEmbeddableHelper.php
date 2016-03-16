@@ -23,10 +23,10 @@ class ORMEmbeddableHelper extends AbstractMappingHelper
         $fileReferenceProperties = [];
 
         foreach ($managers as $manager) {
-            /** @var \Doctrine\ORM\Mapping\ClassMetadata[] $entityMetadataCollection */
-            $entityMetadataCollection = $manager->getMetadataFactory()->getAllMetadata();
+            /** @var \Doctrine\ORM\Mapping\ClassMetadata[] $entityMetadataMap */
+            $entityMetadataMap = $manager->getMetadataFactory()->getAllMetadata();
 
-            foreach ($entityMetadataCollection as $entityMetadata) {
+            foreach ($entityMetadataMap as $entityMetadata) {
                 $properties = [];
 
                 foreach ($entityMetadata->embeddedClasses as $propertyName => $embedded) {
@@ -74,9 +74,9 @@ class ORMEmbeddableHelper extends AbstractMappingHelper
             $events[] = Events::postLoad;
         }
 
-        $doctrineSubscriberDef = $container->findDefinition('atom_uploader.orm_embeddable.listener');
-        $doctrineSubscriberDef->replaceArgument(1, $fileReferenceProperties);
-        $doctrineSubscriberDef->replaceArgument(2, $events);
+        $definition = $container->findDefinition('atom_uploader.orm_embeddable.listener');
+        $definition->replaceArgument(1, $fileReferenceProperties);
+        $definition->replaceArgument(2, $events);
     }
 
     /**

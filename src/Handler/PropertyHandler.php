@@ -80,10 +80,11 @@ class PropertyHandler implements IPropertyHandler
 
         if (method_exists($object, $setter)) {
             call_user_func([$object, $setter], $value);
-        } else {
-            $reflection = new \ReflectionProperty(get_class($object), $property);
-            $reflection->setAccessible(true);
-            $reflection->setValue($object, $value);
+            return;
         }
+
+        $reflection = new \ReflectionProperty(get_class($object), $property);
+        $reflection->setAccessible(true);
+        $reflection->setValue($object, $value);
     }
 }

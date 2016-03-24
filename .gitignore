@@ -7,3 +7,5 @@
 /.vagrant
 /.idea
 /vendor/
+/bin/*
+!/bin/.gitkeep

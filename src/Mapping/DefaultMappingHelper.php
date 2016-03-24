@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 class DefaultMappingHelper extends AbstractMappingHelper
 {
     /**
-     * @param array            $mappings
+     * @param array $mappings
      * @param ContainerBuilder $container
      *
      * @return array of real classnames.

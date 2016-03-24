@@ -13,7 +13,7 @@ use Atom\UploaderBundle\DependencyInjection\Configuration;
 abstract class AbstractMappingHelper implements IMappingHelper
 {
     /**
-     * @param array        $mappings
+     * @param array $mappings
      * @param array|string $options
      *
      * @return bool

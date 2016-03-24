@@ -96,7 +96,7 @@ abstract class Command extends \Symfony\Component\Console\Command\Command
 
     /**
      * @param int|null $id
-     * @param array    $fileReference
+     * @param array $fileReference
      */
     protected function view($id = null, array $fileReference = null)
     {

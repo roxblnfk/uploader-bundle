@@ -11,7 +11,7 @@ trait ContextVars
 
     /**
      * @param string $name
-     * @param mixed  $value
+     * @param mixed $value
      */
     protected function setVar($name, $value)
     {

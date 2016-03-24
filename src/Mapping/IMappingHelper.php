@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 interface IMappingHelper
 {
     /**
-     * @param array            $mappings
+     * @param array $mappings
      * @param ContainerBuilder $container
      *
      * @return array of real classnames.

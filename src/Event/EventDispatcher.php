@@ -20,8 +20,8 @@ class EventDispatcher implements IEventDispatcher
     }
 
     /**
-     * @param string       $eventName
-     * @param object       $fileReference
+     * @param string $eventName
+     * @param object $fileReference
      * @param FileMetadata $metadata
      *
      * @return IUploadEvent

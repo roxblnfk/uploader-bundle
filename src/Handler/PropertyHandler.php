@@ -11,7 +11,7 @@ use Atom\Uploader\Metadata\FileMetadata;
 class PropertyHandler implements IPropertyHandler
 {
     /**
-     * @param object       $fileReference
+     * @param object $fileReference
      * @param FileMetadata $metadata
      *
      * @return \SplFileInfo|string|null
@@ -42,9 +42,9 @@ class PropertyHandler implements IPropertyHandler
     }
 
     /**
-     * @param object       $fileReference
+     * @param object $fileReference
      * @param FileMetadata $metadata
-     * @param string|null  $value
+     * @param string|null $value
      */
     public function setFile($fileReference, FileMetadata $metadata, $value)
     {
@@ -54,7 +54,7 @@ class PropertyHandler implements IPropertyHandler
     /**
      * @param object $object
      * @param string $property
-     * @param mixed  $value
+     * @param mixed $value
      */
     private function setValue($object, $property, $value)
     {
@@ -72,8 +72,8 @@ class PropertyHandler implements IPropertyHandler
     }
 
     /**
-     * @param object            $fileReference
-     * @param FileMetadata      $metadata
+     * @param object $fileReference
+     * @param FileMetadata $metadata
      * @param \SplFileInfo|null $value
      */
     public function setFileInfo($fileReference, FileMetadata $metadata, $value)
@@ -82,9 +82,9 @@ class PropertyHandler implements IPropertyHandler
     }
 
     /**
-     * @param object       $fileReference
+     * @param object $fileReference
      * @param FileMetadata $metadata
-     * @param string|null  $value
+     * @param string|null $value
      */
     public function setUri($fileReference, FileMetadata $metadata, $value)
     {

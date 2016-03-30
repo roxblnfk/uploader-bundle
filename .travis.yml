@@ -1,5 +1,9 @@
 sudo: required
 
+env:
+  - PHP_VERSION=5
+  - PHP_VERSION=7
+
 services:
   - docker
 
@@ -8,12 +12,11 @@ cache:
   - "$HOME/.composer/cache"
 
 install:
-  - bash shortcuts/composer5 install --prefer-dist --no-interaction
+  - bash shortcuts/composer$PHP_VERSION install --prefer-dist --no-interaction
 
 script:
-  - bash shortcuts/composer5 test
-  - bash shortcuts/composer7 test
-  - bash shortcuts/composer5 phpmd
+  - bash shortcuts/composer$PHP_VERSION test
+  - bash shortcuts/composer$PHP_VERSION phpmd
 
 notifications:
   slack:

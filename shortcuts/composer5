@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PROJECT_ROOT=$(realpath `dirname "$0"`/../)
+PROJECT_ROOT="$(dirname "$0")/../"
 php5=$PROJECT_ROOT/shortcuts/php5
 php5="$php5 -dxdebug.remote_enable=0"
 COMPOSER="$PROJECT_ROOT/composer.phar"

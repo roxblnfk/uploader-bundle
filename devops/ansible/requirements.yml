@@ -1,8 +1,0 @@
-- name: atom-azimov.php
-  src: https://github.com/atom-azimov/ansible-php
-- name: atom-azimov.shell
-  src: https://github.com/atom-azimov/ansible-shell
-- name: kosssi.composer
-- name: tersmitten.locales
-- name: jdauphant.nginx
-- name: kamaln7.swapfile

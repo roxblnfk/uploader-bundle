@@ -1,0 +1,10 @@
+version: '2'
+services:
+  php7:
+    build:
+      args:
+        DEBIAN_REPO: 'http://debian.snet.uz/debian'
+  php5:
+    build:
+      args:
+        DEBIAN_REPO: 'http://debian.snet.uz/debian'

@@ -2,15 +2,22 @@ sudo: required
 
 env:
   - PHP_VERSION=5
+    DOCKER_COMPOSE_VERSION=1.6.2
   - PHP_VERSION=7
+    DOCKER_COMPOSE_VERSION=1.6.2
 
 services:
   - docker
 
 cache:
   directories:
-  - "$HOME/.composer/cache"
+    - "$HOME/.composer/cache"
+
 before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
   - docker-compose build php$PHP_VERSION
 
 install:

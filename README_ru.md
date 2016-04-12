@@ -1,29 +1,42 @@
-AtomUploaderBundle это пакет для symfony который обеспечит сохранность файлов.
-==============================================================================
+AtomUploaderBundle
+====
 
-[![Gitter](https://badges.gitter.im/atom-azimov/uploader-bundle.svg)](https://gitter.im/atom-azimov/uploader-bundle?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+Symfony пакет который обеспечит сохранность файлов
+
+---
+
 [![Build Status](https://travis-ci.org/atom-azimov/uploader-bundle.svg?branch=master)](https://travis-ci.org/atom-azimov/uploader-bundle)
+[![Gitter](https://badges.gitter.im/atom-azimov/uploader-bundle.svg)](https://gitter.im/atom-azimov/uploader-bundle?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Dependency Status](https://www.versioneye.com/user/projects/56e910044e714c004f4d09be/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56e910044e714c004f4d09be)
+[![Code Climate](https://codeclimate.com/github/atom-azimov/uploader-bundle/badges/gpa.svg)](https://codeclimate.com/github/atom-azimov/uploader-bundle)
+
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Latest Stable Version](https://poser.pugx.org/atom-azimov/uploader-bundle/v/stable)](https://packagist.org/packages/atom-azimov/uploader-bundle)
 [![Latest Unstable Version](https://poser.pugx.org/atom-azimov/uploader-bundle/v/unstable)](https://packagist.org/packages/atom-azimov/uploader-bundle)
 [![Total Downloads](https://poser.pugx.org/atom-azimov/uploader-bundle/downloads)](https://packagist.org/packages/atom-azimov/uploader-bundle)
-[![Dependency Status](https://www.versioneye.com/user/projects/56e910044e714c004f4d09be/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56e910044e714c004f4d09be)
-[![Code Climate](https://codeclimate.com/github/atom-azimov/uploader-bundle/badges/gpa.svg)](https://codeclimate.com/github/atom-azimov/uploader-bundle)
-[![Issue Count](https://codeclimate.com/github/atom-azimov/uploader-bundle/badges/issue_count.svg)](https://codeclimate.com/github/atom-azimov/uploader-bundle)
+
+---
+
+Мотивация
+---
+
+Проект создался с облегчит загрузку файлов используя [встраиваемые объекты doctrine][embeddables].<br />
+Но он не зависит от doctrine и его можно использовать с другими хранилищами данных.
 
 Возможности:
-------------
+---
 
 - Автоматическое создание имен и сохранение файлов.
 - Внедрят файл обратно в объект, когда он будет загружен из хранилища данных как экземпляр `\SplFileInfo`.
+- Внедрят URI в объект, когда он будет загружен из хранилища данных.
 - Удаление файла из файловой системы при удалении(или обновлении) объекта из хранилища данных.
 
 
 Быстрый старт
--------------
+---
 
-> Быстрый старт подходит для [RAD](https://ru.wikipedia.org/wiki/RAD_(%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)) разработки<br />
-> Для более гибкого использования читайте [документацию](src/Resources/doc/ru/index.md)
+> Быстрый старт подходит для [RAD] разработки<br />
+> Для более гибкого использования читайте [документацию][documentation]
 
 #### Установка:
 ```
@@ -45,10 +58,10 @@ public function registerBundles()
 
 #### Использования
 
-AtomUploaderBundle представляет готовый [объект значение](http://doctrine-orm.readthedocs.org/projects/doctrine-orm/en/latest/tutorials/embeddables.html)
- для быстрой разработки.
+AtomUploaderBundle представляет готовый
+[встраиваемый объект][embeddables] для быстрой разработки.
 
-Чтобы использовать просто встройте его в сущность:
+Просто встройте его в сущность:
 ```php
 # src/Entity/User.php
 
@@ -68,31 +81,45 @@ class User
 ```
 
 Готово ! теперь если присвоите экземпляр `Atom\Uploader\Model\Embeddable\FileReference` в `User::$avatar`
-то при персисте и обновлении
-прикрепленные файлы автоматически будут сохранены в файловой системе(по умолчанию в `%kernel.root_dir%/../web/uploads`)
+то при сохранение и обновлении данных
+прикрепленные файлы автоматически будут сохранены в файловой системы <br />
+(по умолчанию в `%kernel.root_dir%/../web/uploads`)
 
-Простой пример:
+#### Примеры
+
+##### Сохранение загруженного файла:
 ```php
-public function someController(\Symfony\Component\HttpFoundation\Request $request)
-{
-    // $file должен быть экземпляром `\SplFileInfo`
-    $file = $request->files->get('...');
-    $avatar = new Atom\Uploader\Model\Embeddable\FileReference($file);
+$file = // экземпляр \SplFileInfo
+$em = // entity manager
 
-    $user = new Acme\Entity\User();
-    $user->setAvatar($avatar);
+$avatar = new Atom\Uploader\Model\Embeddable\FileReference($file);
 
-    $em = $this->get('doctrine.entity_manager');
+$user = new Acme\Entity\User();
+$user->setAvatar($avatar);
 
-    // Генерируется имя файла и сохраняется в файловой системе, по умолчанию в '%kernel.root_dir%/../web/uploads'.
-    $em->persist($user);
+// Генерируется имя файла и сохраняется в файловой системы.
+$em->persist($user);
 
-    // Если все хорошо то ничего не делается, иначе файл удаляется.
-    $em->flush();
-}
+// Если все хорошо то ничего не делается, иначе файл удаляется.
+$em->flush();
 ```
 
-> Для упрощения примеры показаны в контроллере<br >
+##### Обновления:
+```php
+$file = // экземпляр \SplFileInfo
+$user = // экземпляр Acme\Entity\User
+$avatar = new Atom\Uploader\Model\Embeddable\FileReference($file);
+$user->setAvatar($avatar);
+
+// Генерируется имя файла и сохраняется в файловой системы.
+// Удаляется старый файл если имя файла не совпадает с новым.
+$em->flush();
+```
+##### Получение:
+```php
+// внедряется URI и информация о файле.
+$user = $em->find('Acme\Entity\User', 1);
+```
 > Внедрения информацию о файле (\SplFileInfo) по умолчанию отключена,
 > его можно включит в `config.yml`:
 ```yaml
@@ -102,12 +129,30 @@ atom_uploader:
             inject_file_info_on_load: true
 ```
 
+##### Удаление:
+```php
+$user = // экземпляр Acme\Entity\User
+
+$em->setAvatar(null);
+// или
+$em->remove($user);
+
+// Файл удаляется.
+$em->flush();
+```
+
+
 Документация
-------------
+---
 
-Посмотрите [src/Resources/doc/ru/index.md](src/Resources/doc/ru/index.md)
+См. [src/Resources/doc/ru/index.md][documentation]
 
-Помочь проекту
---------------
+Внести свой вклад проекту
+---
 
-Посмотрите [contributing_ru.md](contributing_ru.md)
+См. [contributing_ru.md][contributing]
+
+[embeddables]: http://doctrine-orm.readthedocs.org/projects/doctrine-orm/en/latest/tutorials/embeddables.html
+[RAD]: https://ru.wikipedia.org/wiki/RAD_(%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)
+[documentation]: src/Resources/doc/ru/index.md
+[contributing]: contributing_ru.md

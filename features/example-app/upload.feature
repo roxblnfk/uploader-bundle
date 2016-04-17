@@ -9,5 +9,6 @@ Feature: Upload files and attach to objects.
     And amount of files in upload path is 1
     Examples:
       | driver         |
-      | orm            |
-      | orm_embeddable |
+      | dbal           |
+#      | orm            |
+#      | orm_embeddable |

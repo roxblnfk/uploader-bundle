@@ -10,6 +10,8 @@ Feature: Stop action on remove an old file.
                 delete_old_file: false
             ExampleApp\Entity\UploadableEntity:
                 delete_old_file: false
+            dbal_uploadable:
+                delete_old_file: false
     """
     And I have selected driver <driver>
     And I have got an uploaded file named "{tmp}/some-file"
@@ -19,5 +21,6 @@ Feature: Stop action on remove an old file.
 
     Examples:
       | driver         |
+      | dbal           |
       | orm            |
       | orm_embeddable |

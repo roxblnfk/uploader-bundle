@@ -66,7 +66,7 @@ oneup_flysystem:
     adapters:
         my_adapter:
             local:
-                directory: %kernel.root_dir%/../web/uploads
+                directory: "%kernel.root_dir%/../web/uploads"
 
     filesystems:
         my_filesystem:
@@ -74,7 +74,7 @@ oneup_flysystem:
             mount: embeddableFs
 
 atom_uploader:
-    drivers: [orm, orm_embeddable]
+    drivers: [orm, orm_embeddable, dbal]
     mappings:
         Atom\Uploader\Model\Embeddable\FileReference:
             fs_prefix: embeddableFs
@@ -87,4 +87,6 @@ atom_uploader:
             file_info_setter: fileInfoField
             file_setter: fileField
             file_getter: fileField
+            inject_file_info_on_load: true
+        dbal_uploadable:
             inject_file_info_on_load: true

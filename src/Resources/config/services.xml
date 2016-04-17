@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-  ~ Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+  ~ Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>
   -->
 
 <!--suppress XmlHighlighting -->
@@ -28,7 +28,7 @@
             <argument type="collection"/> <!-- will be contained with namers. -->
         </service>
 
-        <service id="atom_uploader.event_handler" class="Atom\Uploader\Handler\EventHandler" public="false">
+        <service id="atom_uploader.uploader" class="Atom\Uploader\Handler\Uploader" public="false">
             <!-- Will be used for lazy loading the 'atom_uploader.upload_handler' service. -->
             <argument type="service" id="atom_uploader.lazy_loader"/>
         </service>
@@ -46,7 +46,7 @@
             <argument type="service" id="event_dispatcher"/>
         </service>
 
-        <service id="atom_uploader.property_handler" class="Atom\UploaderBundle\Handler\PropertyHandler"
+        <service id="atom_uploader.property_handler" class="Atom\Uploader\Handler\PropertyHandler"
                  public="false"/>
 
         <service id="atom_uploader.lazy_loader" class="Atom\UploaderBundle\LazyLoad\LazyLoader" public="false">

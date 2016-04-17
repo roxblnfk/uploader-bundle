@@ -1,9 +1,11 @@
 default:
+  formatters:
+    progress: true
   suites:
     orm:
-      paths: [%paths.base%/features/example-app]
+      paths: ["%paths.base%/features/example-app"]
       contexts:
         - Context\ExampleAppContext
 
   autoload:
-    'Context': %paths.base%/features
+    'Context': "%paths.base%/features"

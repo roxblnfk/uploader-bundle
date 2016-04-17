@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+ * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>
  */
 
 namespace Atom\UploaderBundle\DependencyInjection\Compiler;
@@ -137,12 +137,12 @@ class RegisterMappingsCompiler implements CompilerPassInterface
             $container->findDefinition($serviceId)->setPublic(false);
 
             foreach ($tags as $tag) {
-                $type = $tag['type'];
-                if (!in_array($type, $usedAdapters)) {
+                $adapterName = $tag['adapter'];
+                if (!in_array($adapterName, $usedAdapters)) {
                     continue;
                 }
 
-                $adapters[$type] = $adapter;
+                $adapters[$adapterName] = $adapter;
             }
         }
 

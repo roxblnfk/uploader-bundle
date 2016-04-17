@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
-  ~ Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+  ~ Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>
   -->
 
 <!--suppress ALL, XmlHighlighting -->
@@ -69,6 +69,44 @@
             <argument type="service" id="event_dispatcher"/>
             <argument type="service" id="doctrine.orm.entity_manager"/>
             <tag name="console.command"/>
+        </service>
+
+
+        <service id="exampleapp.dbal_upload" class="ExampleApp\Command\DBAL\UploadCommand">
+            <argument>dbal:upload</argument>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="atom_uploader.uploader"/>
+            <argument type="service" id="database_connection"/>
+            <tag name="console.command"/>
+        </service>
+
+        <service id="exampleapp.dbal_get" class="ExampleApp\Command\DBAL\GetCommand">
+            <argument>dbal:get</argument>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="atom_uploader.uploader"/>
+            <argument type="service" id="database_connection"/>
+            <tag name="console.command"/>
+        </service>
+
+        <service id="exampleapp.dbal_remove" class="ExampleApp\Command\DBAL\RemoveCommand">
+            <argument>dbal:remove</argument>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="atom_uploader.uploader"/>
+            <argument type="service" id="database_connection"/>
+            <tag name="console.command"/>
+        </service>
+
+        <service id="exampleapp.dbal_update" class="ExampleApp\Command\DBAL\UpdateCommand">
+            <argument>dbal:update</argument>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="atom_uploader.uploader"/>
+            <argument type="service" id="database_connection"/>
+            <tag name="console.command"/>
+        </service>
+
+        <service id="atom_uploader.dbal.mapping_helper"
+                 class="ExampleApp\Mapping\DBALMappingHelper" public="false">
+            <tag name="atom_uploader.mapping.helper_repo"/>
         </service>
     </services>
 </container>

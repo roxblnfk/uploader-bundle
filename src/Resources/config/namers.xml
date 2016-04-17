@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-  ~ Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+  ~ Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>
   -->
 
 <container xmlns="http://symfony.com/schema/dic/services">

@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+ * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>
  */
 
 namespace Atom\UploaderBundle\Mapping;
@@ -53,12 +53,12 @@ abstract class AbstractMappingHelper implements IMappingHelper
                 continue;
             }
 
-            if (in_array($mappedClass, class_implements($className))) {
+            if (in_array($mappedClass, @class_implements($className) ?: [])) {
                 array_unshift($lowPriorityMappings, $mapping);
                 continue;
             }
 
-            if (in_array($mappedClass, class_uses($className))) {
+            if (in_array($mappedClass, @class_uses($className) ?: [])) {
                 $lowPriorityMappings[] = $mapping;
                 continue;
             }

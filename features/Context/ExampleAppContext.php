@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+ * Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>
  */
 
 namespace Context;
@@ -36,19 +36,20 @@ class ExampleAppContext implements Context, SnippetAcceptingContext
 
     public function __construct()
     {
-        $projectRoot = realpath(__DIR__.'/../../example-app');
+        $projectRoot = realpath(__DIR__ . '/../../example-app');
         $this->setVar('project root', $projectRoot);
-        $this->setVar('upload path', $projectRoot.'/web/uploads');
-        $this->setVar('tmp', $projectRoot.'/var/tmp');
-        $this->setVar('log', $projectRoot.'/var/logs');
-        $this->setVar('config path', $projectRoot.'/var/tmp/config.yml');
+        $this->setVar('upload path', $projectRoot . '/web/uploads');
+        $this->setVar('tmp', $projectRoot . '/var/tmp');
+        $this->setVar('log', $projectRoot . '/var/logs');
+        $this->setVar('config path', $projectRoot . '/var/tmp/config.yml');
 
         $this->fs = new Filesystem();
         $this->outputData = [];
         $this->statusCode = 0;
         $this->subscribers = [];
         $this->driver = 'orm';
-        $this->console = sprintf('"%s" %s/bin/test-console', PHP_BINARY, $projectRoot);
+
+        $this->console = sprintf('"%s" -dxdebug.remote_autostart=%s %s/bin/test-console', PHP_BINARY, ini_get('xdebug.remote_autostart'), $projectRoot);
     }
 
     /**
@@ -119,7 +120,7 @@ class ExampleAppContext implements Context, SnippetAcceptingContext
         $command = [
             $this->console,
             sprintf('%s:%s', $this->driver, $action),
-            '-e test',
+            '-e=test',
             '--no-debug',
         ];
 
@@ -147,7 +148,7 @@ class ExampleAppContext implements Context, SnippetAcceptingContext
             $this->clearCache();
         }
 
-        exec(sprintf('%s doctrine:schema:update --force --no-debug -e test', $this->console));
+        exec(sprintf('%s doctrine:schema:update --force --no-debug -e=test', $this->console));
         $this->output = system($command, $this->statusCode);
         $this->outputData = [];
 
@@ -170,7 +171,7 @@ class ExampleAppContext implements Context, SnippetAcceptingContext
 
     private function clearCache()
     {
-        exec(sprintf('%s cache:clear --no-warmup --no-debug -e test', $this->console));
+        exec(sprintf('%s cache:clear --no-warmup --no-debug -e=test', $this->console));
     }
 
     private function refreshVars($template)
@@ -303,7 +304,7 @@ class ExampleAppContext implements Context, SnippetAcceptingContext
 
     private function cleanORMDatabase()
     {
-        @unlink($this->getVar('project root').'/src/Resources/data/orm.sqlite');
+        @unlink($this->getVar('project root') . '/src/Resources/data/orm.sqlite');
     }
 
     /**

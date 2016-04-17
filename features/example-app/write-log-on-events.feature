@@ -10,6 +10,7 @@ Feature: Write log on events.
 
     Examples:
       | driver         |
+      | dbal           |
       | orm            |
       | orm_embeddable |
 
@@ -23,6 +24,7 @@ Feature: Write log on events.
     Examples:
       | driver         |
       | orm            |
+      | dbal           |
       | orm_embeddable |
 
   Scenario Outline: Write log on update.
@@ -36,6 +38,7 @@ Feature: Write log on events.
     Examples:
       | driver         |
       | orm            |
+      | dbal           |
       | orm_embeddable |
 
   Scenario Outline: Write log on remove an old file.
@@ -49,6 +52,7 @@ Feature: Write log on events.
     Examples:
       | driver         |
       | orm            |
+      | dbal           |
       | orm_embeddable |
 
   Scenario Outline: Write log on inject an uri and file info.
@@ -62,4 +66,5 @@ Feature: Write log on events.
     Examples:
       | driver         |
       | orm            |
+      | dbal           |
       | orm_embeddable |

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-  ~ Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+  ~ Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>
   -->
 
 <container xmlns="http://symfony.com/schema/dic/services">
@@ -8,7 +8,7 @@
         <service id="atom_uploader.orm_embeddable.listener"
                  class="Atom\Uploader\Listener\ORMEmbeddable\ORMEmbeddableListener"
                  public="false">
-            <argument type="service" id="atom_uploader.event_handler"/>
+            <argument type="service" id="atom_uploader.uploader"/>
             <argument type="collection"/> <!-- Will be contain the properties that has a file reference-->
             <argument type="collection"/> <!-- Will be contain the doctrine subscribed events-->
             <tag name="doctrine.event_subscriber"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-  ~ Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>.
+  ~ Copyright © 2016 Elbek Azimov. Contacts: <atom.azimov@gmail.com>
   -->
 
 <container xmlns="http://symfony.com/schema/dic/services">
@@ -9,11 +9,11 @@
                  public="false">
             <argument type="service" id="oneup_flysystem.mount_manager" on-invalid="ignore"/>
             <argument type="service" id="atom_uploader.flysystem_stream_wrapper"/>
-            <tag name="atom_uploader.filesystem_adapter_repo" type="flysystem"/>
+            <tag name="atom_uploader.filesystem_adapter_repo" adapter="flysystem"/>
         </service>
 
         <service id="atom_uploader.storage.local" class="Atom\Uploader\Filesystem\LocalAdapter" public="false">
-            <tag name="atom_uploader.filesystem_adapter_repo" type="local"/>
+            <tag name="atom_uploader.filesystem_adapter_repo" adapter="local"/>
         </service>
 
         <service id="atom_uploader.flysystem_stream_wrapper" class="Atom\Uploader\ThirdParty\FlysystemStreamWrapper"

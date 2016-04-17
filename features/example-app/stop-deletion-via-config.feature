@@ -10,6 +10,8 @@ Feature: Stop deletion via config.
                 delete_on_remove: false
             ExampleApp\Entity\UploadableEntity:
                 delete_on_remove: false
+            dbal_uploadable:
+                delete_on_remove: false
     """
     And I have selected driver <driver>
     And I have got an uploaded file named "{tmp}/some-file"
@@ -18,5 +20,6 @@ Feature: Stop deletion via config.
 
     Examples:
       | driver         |
+      | dbal           |
       | orm            |
       | orm_embeddable |

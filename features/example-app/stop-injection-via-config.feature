@@ -12,6 +12,9 @@ Feature: Stop action on inject an uri and file info.
             ExampleApp\Entity\UploadableEntity:
                 inject_uri_on_load: false
                 inject_file_info_on_load: false
+            dbal_uploadable:
+                inject_uri_on_load: false
+                inject_file_info_on_load: false
     """
     And I have selected driver <driver>
     And I have got an uploaded file named "{tmp}/some-file"
@@ -21,5 +24,6 @@ Feature: Stop action on inject an uri and file info.
 
     Examples:
       | driver         |
+      | dbal           |
       | orm            |
       | orm_embeddable |

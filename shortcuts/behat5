@@ -2,4 +2,4 @@
 
 php5=$(dirname "$0")/php5
 
-$php5 -dxdebug.remote_enable=0 vendor/behat/behat/bin/behat "$@"
+$php5 vendor/behat/behat/bin/behat --stop-on-failure "$@"

@@ -12,7 +12,7 @@ cache:
 install:
   - php -r "readfile('https://getcomposer.org/installer');" | php
   - php composer.phar config --global github-oauth.github.com $GH_TOKEN
-  - php -d memory_limit=-1 composer install --no-interaction
+  - php -d memory_limit=-1 composer.phar install --no-interaction
 
 script:
   - php composer.phar test

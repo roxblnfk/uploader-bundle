@@ -25,5 +25,5 @@ Feature: Stop action on inject an uri and file info.
     Examples:
       | driver         |
       | dbal           |
-      | orm            |
-      | orm_embeddable |
+#      | orm            |
+#      | orm_embeddable |

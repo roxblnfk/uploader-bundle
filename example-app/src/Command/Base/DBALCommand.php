@@ -51,6 +51,10 @@ abstract class DBALCommand extends Command
         $statement->bindValue('id', $this->getId());
         $statement->execute();
 
-        return $statement->fetch();
+        $uploadable = $statement->fetch();
+        $uploadable['uri'] = null;
+        $uploadable['fileInfo'] = null;
+        
+        return $uploadable;
     }
 }

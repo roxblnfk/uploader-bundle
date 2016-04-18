@@ -28,7 +28,7 @@ class RegisterMappingsCompiler implements CompilerPassInterface
         $defaultHelper = $helperRepo->getHelper('default');
 
         $config = $this->getConfig($container);
-        $availableMappingsNames = $this->getAvailableMappingsNames(
+        $availableMappings = $this->getAvailableMappingsNames(
             $container,
             $helperRepo,
             $defaultHelper,
@@ -36,7 +36,7 @@ class RegisterMappingsCompiler implements CompilerPassInterface
             $config['drivers']
         );
 
-        $mappings = $this->prepareMappings($config['mappings'], $availableMappingsNames, $defaultHelper);
+        $mappings = $this->prepareMappings($config['mappings'], $availableMappings, $defaultHelper);
 
         if (empty($mappings)) {
             return;
@@ -70,23 +70,23 @@ class RegisterMappingsCompiler implements CompilerPassInterface
         array $drivers
     )
     {
-        $availableMappingsNames = [];
+        $availableMappings = [];
 
         foreach ($drivers as $driver) {
             $helper = $helperRepo->getHelper($driver) ?: $defaultHelper;
-            $availableMappingsNames = array_merge($availableMappingsNames, $helper->getAvailableMappingsNames($mappings, $container));
+            $availableMappings = array_merge($availableMappings, $helper->getAvailableMappingsNames($mappings, $container));
         }
 
-        return $availableMappingsNames;
+        return $availableMappings;
     }
 
-    private function prepareMappings(array $mappings, array $availableMappingsNames, DefaultMappingHelper $helper)
+    private function prepareMappings(array $mappings, array $availableMappings, DefaultMappingHelper $helper)
     {
-        $availableMappingsNames = array_combine($availableMappingsNames, $availableMappingsNames);
+        $availableMappings = array_combine($availableMappings, $availableMappings);
 
         return array_map(function ($className) use ($mappings, $helper) {
             return $helper->findMappingByClassName($mappings, $className) ?: Configuration::getMappingDefaults();
-        }, $availableMappingsNames);
+        }, $availableMappings);
     }
 
     private function registerMetadata(array $mappings, ContainerBuilder $container)

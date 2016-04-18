@@ -21,11 +21,12 @@ before_install:
   - docker-compose build php$PHP_VERSION
 
 install:
-  - bash shortcuts/composer$PHP_VERSION install --no-interaction
+  - shortcuts/composer$PHP_VERSION config --global github-oauth.github.com $GH_TOKEN
+  - shortcuts/composer$PHP_VERSION install --no-interaction
 
 script:
-  - bash shortcuts/composer$PHP_VERSION test
-  - bash shortcuts/composer$PHP_VERSION phpmd
+  - shortcuts/composer$PHP_VERSION test
+  - shortcuts/composer$PHP_VERSION phpmd
 
 notifications:
   slack:

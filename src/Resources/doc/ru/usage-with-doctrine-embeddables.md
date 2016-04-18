@@ -37,7 +37,7 @@ class Avatar {
 }
 ```
 
-Встройте в сущность
+Встройте его в сущность
 ```php
 # src/Entity/User.php
 
@@ -68,7 +68,7 @@ atom_uploader:
             inject_file_info_on_load: true
 ```
 
-> [Справка о всех настройках][reference]
+> [Справка о всех параметрах][reference]
 
 Примеры
 ---

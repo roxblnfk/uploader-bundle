@@ -14,7 +14,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 class ORMHelper extends AbstractMappingHelper
 {
-    public function getRealClasses(array $mappings, ContainerBuilder $container)
+    public function getAvailableMappingsNames(array $mappings, ContainerBuilder $container)
     {
 
         /** @var ObjectManager[] $managers */

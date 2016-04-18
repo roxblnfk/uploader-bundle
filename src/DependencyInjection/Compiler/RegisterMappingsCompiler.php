@@ -28,9 +28,15 @@ class RegisterMappingsCompiler implements CompilerPassInterface
         $defaultHelper = $helperRepo->getHelper('default');
 
         $config = $this->getConfig($container);
-        $mappedClasses = $this->getMappedClasses($container, $helperRepo, $defaultHelper, $config['mappings'],
-            $config['drivers']);
-        $mappings = $this->prepareMappings($config['mappings'], $mappedClasses, $defaultHelper);
+        $availableMappingsNames = $this->getAvailableMappingsNames(
+            $container,
+            $helperRepo,
+            $defaultHelper,
+            $config['mappings'],
+            $config['drivers']
+        );
+
+        $mappings = $this->prepareMappings($config['mappings'], $availableMappingsNames, $defaultHelper);
 
         if (empty($mappings)) {
             return;
@@ -56,46 +62,47 @@ class RegisterMappingsCompiler implements CompilerPassInterface
         return $processor->processConfiguration(new Configuration(), $configs);
     }
 
-    private function getMappedClasses(
+    private function getAvailableMappingsNames(
         ContainerBuilder $container,
         MappingHelperRepo $helperRepo,
         IMappingHelper $defaultHelper,
         array $mappings,
         array $drivers
-    ) {
-        $mappedClasses = [];
+    )
+    {
+        $availableMappingsNames = [];
 
         foreach ($drivers as $driver) {
             $helper = $helperRepo->getHelper($driver) ?: $defaultHelper;
-            $mappedClasses = array_merge($mappedClasses, $helper->getRealClasses($mappings, $container));
+            $availableMappingsNames = array_merge($availableMappingsNames, $helper->getAvailableMappingsNames($mappings, $container));
         }
 
-        return $mappedClasses;
+        return $availableMappingsNames;
     }
 
-    private function prepareMappings(array $mappings, array $mappedClasses, DefaultMappingHelper $helper)
+    private function prepareMappings(array $mappings, array $availableMappingsNames, DefaultMappingHelper $helper)
     {
-        $mappedClasses = array_combine($mappedClasses, $mappedClasses);
+        $availableMappingsNames = array_combine($availableMappingsNames, $availableMappingsNames);
 
         return array_map(function ($className) use ($mappings, $helper) {
             return $helper->findMappingByClassName($mappings, $className) ?: Configuration::getMappingDefaults();
-        }, $mappedClasses);
+        }, $availableMappingsNames);
     }
 
     private function registerMetadata(array $mappings, ContainerBuilder $container)
     {
         $definition = $container->findDefinition('atom_uploader.metadata_repo');
         $metadataMap = [];
-        $fileReferenceClasses = [];
+        $mappingsNames = [];
 
-        foreach ($mappings as $className => $mapping) {
+        foreach ($mappings as $name => $mapping) {
             $metadataIndex = array_search($mapping, $metadataMap);
 
             if (false === $metadataIndex) {
                 $metadataIndex = array_push($metadataMap, $mapping) - 1;
             }
 
-            $fileReferenceClasses[$className] = $metadataIndex;
+            $mappingsNames[$name] = $metadataIndex;
         }
 
         foreach ($metadataMap as $id => &$metadata) {
@@ -121,7 +128,7 @@ class RegisterMappingsCompiler implements CompilerPassInterface
             $metadata = new Reference($serviceId);
         }
 
-        $definition->replaceArgument(0, $fileReferenceClasses);
+        $definition->replaceArgument(0, $mappingsNames);
         $definition->replaceArgument(1, $metadataMap);
     }
 

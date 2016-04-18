@@ -103,10 +103,5 @@
             <argument type="service" id="database_connection"/>
             <tag name="console.command"/>
         </service>
-
-        <service id="atom_uploader.dbal.mapping_helper"
-                 class="ExampleApp\Mapping\DBALMappingHelper" public="false">
-            <tag name="atom_uploader.mapping.helper_repo"/>
-        </service>
     </services>
 </container>

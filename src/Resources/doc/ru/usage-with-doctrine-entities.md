@@ -41,7 +41,7 @@ class User {
 }
 ```
 
-Мэппинг для этой сущности:
+Мэппинг:
 
 ```yaml
 # app/config/config.yml
@@ -50,7 +50,7 @@ atom_uploader:
     mappings:
         Acme\Entity\User:
             
-            # Т.к. имена свойств сущноста отличается от значение по умолчанию, определяем их тут.
+            # Т.к. название свойств сущноста отличается от значение по умолчанию, определяем их тут.
             file_setter: avatar
             file_getter: avatar
             uri_setter: avatarUri
@@ -61,7 +61,7 @@ atom_uploader:
             inject_file_info_on_load: true
 ```
 
-> [Справка о всех настройках][reference]
+> [Справка о всех параметрах][reference]
 
 Примеры
 ---

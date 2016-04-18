@@ -16,9 +16,9 @@ class DBALMappingHelper extends AbstractMappingHelper
      * @param array $mappings
      * @param ContainerBuilder $container
      *
-     * @return array of real classnames.
+     * @return array of mapping names.
      */
-    public function getRealClasses(array $mappings, ContainerBuilder $container)
+    public function getAvailableMappingsNames(array $mappings, ContainerBuilder $container)
     {
         return ['dbal_uploadable'];
     }

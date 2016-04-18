@@ -10,13 +10,13 @@ cache:
     - "$HOME/.composer/cache"
 
 install:
-  - composer selfupdate
-  - composer config --global github-oauth.github.com $GH_TOKEN
-  - composer install --no-interaction
+  - php -r "readfile('https://getcomposer.org/installer');" | php
+  - php composer.phar config --global github-oauth.github.com $GH_TOKEN
+  - php -d memory_limit=-1 composer install --no-interaction
 
 script:
-  - composer test
-  - composer phpmd
+  - php composer test
+  - php composer phpmd
 
 notifications:
   slack:

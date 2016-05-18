@@ -1,7 +1,7 @@
 AtomUploaderBundle
 ====
 
-Symfony пакет который обеспечит сохранность файлов
+Symfony пакет, который обеспечивает сохранение загруженных файлов.
 
 ---
 
@@ -9,6 +9,7 @@ Symfony пакет который обеспечит сохранность фа
 [![Gitter](https://badges.gitter.im/atom-azimov/uploader-bundle.svg)](https://gitter.im/atom-azimov/uploader-bundle?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Dependency Status](https://www.versioneye.com/user/projects/56e910044e714c004f4d09be/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56e910044e714c004f4d09be)
 [![Code Climate](https://codeclimate.com/github/atom-azimov/uploader-bundle/badges/gpa.svg)](https://codeclimate.com/github/atom-azimov/uploader-bundle)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/7ac96506-c7fb-4707-8262-77a2b940d8f7/mini.png)](https://insight.sensiolabs.com/projects/7ac96506-c7fb-4707-8262-77a2b940d8f7)
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Latest Stable Version](https://poser.pugx.org/atom-azimov/uploader-bundle/v/stable)](https://packagist.org/packages/atom-azimov/uploader-bundle)
@@ -20,34 +21,35 @@ Symfony пакет который обеспечит сохранность фа
 Мотивация
 ---
 
-Проект создался с целью облегчит загрузку файлов используя [встраиваемых объектов doctrine][embeddables].<br />
+Проект создавался с целью облегчить загрузку файлов, используя [встраиваемые объекты doctrine][embeddables].
 Но он не зависит от doctrine и его можно использовать с другими хранилищами данных, даже с простыми массивами.
 
-Возможности:
+Возможности
 ---
 
-- Автоматическое создание имен и сохранение файлов.
-- Внедрят файл обратно в объект, когда он будет загружен из хранилища данных как экземпляр `\SplFileInfo`.
-- Внедрят URI в объект, когда он будет загружен из хранилища данных.
-- Удаление файла из файловой системы при удалении(или обновлении) объекта из хранилища данных.
+- Автоматическое создание имён и сохранение файлов;
+- Внедрение файла обратно в объект, когда он будет загружен из хранилища данных, как экземпляр `\SplFileInfo`;
+- Внедрение URI в объект, когда он будет загружен из хранилища данных;
+- Удаление файла из файловой системы при удалении (или обновлении) объекта из хранилища данных.
 
-Вес функционал настраиваемый.
+Весь функционал настраиваемый.
 
-> Неиспользуемые сервисы удаляется на этапе оптимизации DIC
- а используемые сервисы инициализируется только тогда когда они понадобится.
+> Неиспользуемые сервисы удаляются на этапе оптимизации DIC, а используемые сервисы инициализируются только тогда, когда они понадобятся.
 
 Быстрый старт
 ---
 
-> Быстрый старт подходит для [RAD] разработки<br />
+> Быстрый старт подходит для [RAD] разработки
 > Для более гибкого использования читайте [документацию][documentation]
 
-#### Установка:
+#### Установка
+
 ```
 composer require atom-azimov/uploader-bundle
 ```
 
 #### Включение
+
 ```php
 # app/AppKernel.php
 public function registerBundles()
@@ -60,12 +62,13 @@ public function registerBundles()
 }
 ```
 
-#### Использования
+#### Использование
 
-AtomUploaderBundle представляет готовый
+AtomUploaderBundle представляет собой готовый
 [встраиваемый объект][embeddables] для быстрой разработки.
 
 Просто встройте его в сущность:
+
 ```php
 # src/Entity/User.php
 
@@ -84,12 +87,13 @@ class User
 }
 ```
 
-Готово ! теперь прикрепленные файлы автоматически сохраняются в файловой системы,
+Готово! Теперь прикреплённые файлы автоматически сохраняются в файловой системе,
 по умолчанию в "%kernel.root_dir%/../web/uploads"
 
 #### Примеры
 
-##### Сохранение загруженного файла:
+##### Сохранение загруженного файла
+
 ```php
 $file = // экземпляр \SplFileInfo
 $em = // entity manager
@@ -106,7 +110,8 @@ $em->persist($user);
 $em->flush();
 ```
 
-##### Обновления:
+##### Обновление
+
 ```php
 $file = // экземпляр \SplFileInfo
 $user = // экземпляр Acme\Entity\User
@@ -117,13 +122,17 @@ $user->setAvatar($avatar);
 // Удаляется старый файл если имя файла не совпадает с новым.
 $em->flush();
 ```
-##### Получение:
+
+##### Получение
+
 ```php
 // внедряется URI и информация о файле.
 $user = $em->find('Acme\Entity\User', 1);
 ```
-> Внедрения информацию о файле (\SplFileInfo) по умолчанию отключена,
-> его можно включит в `config.yml`:
+
+> Внедрение информации о файле (\SplFileInfo) по умолчанию отключено,
+> его можно включить в `config.yml`:
+
 ```yaml
 atom_uploader:
     mappings:
@@ -131,7 +140,8 @@ atom_uploader:
             inject_file_info_on_load: true
 ```
 
-##### Удаление:
+##### Удаление
+
 ```php
 $user = // экземпляр Acme\Entity\User
 
@@ -143,13 +153,12 @@ $em->remove($user);
 $em->flush();
 ```
 
-
 Документация
 ---
 
 См. [src/Resources/doc/ru/index.md][documentation]
 
-Внести свой вклад проекту
+Внести свой вклад в развитие проекта
 ---
 
 См. [contributing_ru.md][contributing]

@@ -9,6 +9,7 @@ Symfony пакет, который обеспечивает сохранение
 [![Gitter](https://badges.gitter.im/atom-azimov/uploader-bundle.svg)](https://gitter.im/atom-azimov/uploader-bundle?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Dependency Status](https://www.versioneye.com/user/projects/56e910044e714c004f4d09be/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56e910044e714c004f4d09be)
 [![Code Climate](https://codeclimate.com/github/atom-azimov/uploader-bundle/badges/gpa.svg)](https://codeclimate.com/github/atom-azimov/uploader-bundle)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/7ac96506-c7fb-4707-8262-77a2b940d8f7/mini.png)](https://insight.sensiolabs.com/projects/7ac96506-c7fb-4707-8262-77a2b940d8f7)
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Latest Stable Version](https://poser.pugx.org/atom-azimov/uploader-bundle/v/stable)](https://packagist.org/packages/atom-azimov/uploader-bundle)

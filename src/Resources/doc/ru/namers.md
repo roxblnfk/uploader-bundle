@@ -45,4 +45,4 @@ services:
 [events]: events.md
 [fs-adapters]: fs-adapters.md
 [datastore-integration]: datastore-integration.md
-[INamer]: https://github.com/atom-azimov/uploader/blob/master/src/Naming/INamer.php
+[INamer]: https://github.com/atom-php/uploader/blob/master/src/Naming/INamer.php

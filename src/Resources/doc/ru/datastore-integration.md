@@ -157,7 +157,7 @@ TODO
 [namers]: namers.md
 [events]: events.md
 [fs-adapters]: fs-adapters.md
-[Uploader]: https://github.com/atom-azimov/uploader/blob/master/src/Handler/Uploader.php
+[Uploader]: https://github.com/atom-php/uploader/blob/master/src/Handler/Uploader.php
 [dbal]: http://www.doctrine-project.org/projects/dbal.html
 [IMappingHelper]: ../../../Mapping/IMappingHelper.php
-[ORMListener]: https://github.com/atom-azimov/uploader/blob/master/src/Listener/ORM/ORMListener.php
+[ORMListener]: https://github.com/atom-php/uploader/blob/master/src/Listener/ORM/ORMListener.php

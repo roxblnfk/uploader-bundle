@@ -4,7 +4,7 @@
 Установка
 ---
 ```
-composer require atom-azimov/uploader-bundle
+composer require atom-php/uploader-bundle
 ```
 
 Включение

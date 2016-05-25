@@ -48,4 +48,4 @@ services:
 [events]: events.md
 [datastore-integration]: datastore-integration.md
 [flysystem]: https://github.com/thephpleague/flysystem
-[IFilesystemAdapter]: https://github.com/atom-azimov/uploader/blob/master/src/Filesystem/IFilesystemAdapter.php
+[IFilesystemAdapter]: https://github.com/atom-php/uploader/blob/master/src/Filesystem/IFilesystemAdapter.php

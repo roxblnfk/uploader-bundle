@@ -71,26 +71,26 @@ AtomUploaderBundle при обработке файла отправляет с�
 [namers]: namers.md
 [fs-adapters]: fs-adapters.md
 [datastore-integration]: datastore-integration.md
-[IUploadEvent]: https://github.com/atom-azimov/uploader/blob/master/src/Event/IUploadEvent.php
+[IUploadEvent]: https://github.com/atom-php/uploader/blob/master/src/Event/IUploadEvent.php
 
-[PRE_UPLOAD]: https://github.com/atom-azimov/uploader/blob/master/src/Event/IUploadEvent.php#L12
-[POST_UPLOAD]: https://github.com/atom-azimov/uploader/blob/master/src/Event/IUploadEvent.php#L13
+[PRE_UPLOAD]: https://github.com/atom-php/uploader/blob/master/src/Event/IUploadEvent.php#L12
+[POST_UPLOAD]: https://github.com/atom-php/uploader/blob/master/src/Event/IUploadEvent.php#L13
 
-[PRE_UPDATE]: https://github.com/atom-azimov/uploader/blob/master/src/Event/IUploadEvent.php#L15
-[POST_UPDATE]: https://github.com/atom-azimov/uploader/blob/master/src/Event/IUploadEvent.php#L16
+[PRE_UPDATE]: https://github.com/atom-php/uploader/blob/master/src/Event/IUploadEvent.php#L15
+[POST_UPDATE]: https://github.com/atom-php/uploader/blob/master/src/Event/IUploadEvent.php#L16
 
-[PRE_REMOVE]: https://github.com/atom-azimov/uploader/blob/master/src/Event/IUploadEvent.php#L18
-[POST_REMOVE]: https://github.com/atom-azimov/uploader/blob/master/src/Event/IUploadEvent.php#L19
+[PRE_REMOVE]: https://github.com/atom-php/uploader/blob/master/src/Event/IUploadEvent.php#L18
+[POST_REMOVE]: https://github.com/atom-php/uploader/blob/master/src/Event/IUploadEvent.php#L19
 
-[PRE_REMOVE_OLD_FILE]: https://github.com/atom-azimov/uploader/blob/master/src/Event/IUploadEvent.php#L21
-[POST_REMOVE_OLD_FILE]: https://github.com/atom-azimov/uploader/blob/master/src/Event/IUploadEvent.php#L22
+[PRE_REMOVE_OLD_FILE]: https://github.com/atom-php/uploader/blob/master/src/Event/IUploadEvent.php#L21
+[POST_REMOVE_OLD_FILE]: https://github.com/atom-php/uploader/blob/master/src/Event/IUploadEvent.php#L22
 
-[PRE_INJECT_URI]: https://github.com/atom-azimov/uploader/blob/master/src/Event/IUploadEvent.php#L24
-[POST_INJECT_URI]: https://github.com/atom-azimov/uploader/blob/master/src/Event/IUploadEvent.php#L25
+[PRE_INJECT_URI]: https://github.com/atom-php/uploader/blob/master/src/Event/IUploadEvent.php#L24
+[POST_INJECT_URI]: https://github.com/atom-php/uploader/blob/master/src/Event/IUploadEvent.php#L25
 
-[PRE_INJECT_FILE_INFO]: https://github.com/atom-azimov/uploader/blob/master/src/Event/IUploadEvent.php#L27
-[POST_INJECT_FILE_INFO]: https://github.com/atom-azimov/uploader/blob/master/src/Event/IUploadEvent.php#L28
+[PRE_INJECT_FILE_INFO]: https://github.com/atom-php/uploader/blob/master/src/Event/IUploadEvent.php#L27
+[POST_INJECT_FILE_INFO]: https://github.com/atom-php/uploader/blob/master/src/Event/IUploadEvent.php#L28
 
-[metadata]: https://github.com/atom-azimov/uploader/blob/master/src/Metadata/FileMetadata.php
+[metadata]: https://github.com/atom-php/uploader/blob/master/src/Metadata/FileMetadata.php
 
-[stopAction]: https://github.com/atom-azimov/uploader/blob/master/src/Event/IUploadEvent.php#L33
+[stopAction]: https://github.com/atom-php/uploader/blob/master/src/Event/IUploadEvent.php#L33

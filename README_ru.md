@@ -5,16 +5,17 @@ Symfony пакет, который обеспечивает сохранение
 
 ---
 
-[![Build Status](https://travis-ci.org/atom-azimov/uploader-bundle.svg?branch=master)](https://travis-ci.org/atom-azimov/uploader-bundle)
-[![Gitter](https://badges.gitter.im/atom-azimov/uploader-bundle.svg)](https://gitter.im/atom-azimov/uploader-bundle?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Dependency Status](https://www.versioneye.com/user/projects/56e910044e714c004f4d09be/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56e910044e714c004f4d09be)
-[![Code Climate](https://codeclimate.com/github/atom-azimov/uploader-bundle/badges/gpa.svg)](https://codeclimate.com/github/atom-azimov/uploader-bundle)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/7ac96506-c7fb-4707-8262-77a2b940d8f7/mini.png)](https://insight.sensiolabs.com/projects/7ac96506-c7fb-4707-8262-77a2b940d8f7)
+[![Build Status](https://travis-ci.org/atom-php/uploader-bundle.svg?branch=master)](https://travis-ci.org/atom-php/uploader-bundle)
+[![Gitter](https://badges.gitter.im/atom-php/uploader-bundle.svg)](https://gitter.im/atom-php/uploader-bundle?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Slack Status](https://atom-php.herokuapp.com/badge.svg)](https://atom-php.herokuapp.com/)
+[![Dependency Status](https://www.versioneye.com/user/projects/5745eb86ce8d0e004130c764/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5745eb86ce8d0e004130c764)
+[![Code Climate](https://codeclimate.com/github/atom-php/uploader-bundle/badges/gpa.svg)](https://codeclimate.com/github/atom-php/uploader-bundle)
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Latest Stable Version](https://poser.pugx.org/atom-azimov/uploader-bundle/v/stable)](https://packagist.org/packages/atom-azimov/uploader-bundle)
-[![Latest Unstable Version](https://poser.pugx.org/atom-azimov/uploader-bundle/v/unstable)](https://packagist.org/packages/atom-azimov/uploader-bundle)
-[![Total Downloads](https://poser.pugx.org/atom-azimov/uploader-bundle/downloads)](https://packagist.org/packages/atom-azimov/uploader-bundle)
+[![Latest Stable Version](https://poser.pugx.org/atom-php/uploader-bundle/v/stable)](https://packagist.org/packages/atom-php/uploader-bundle)
+[![Latest Unstable Version](https://poser.pugx.org/atom-php/uploader-bundle/v/unstable)](https://packagist.org/packages/atom-php/uploader-bundle)
+[![Total Downloads](https://poser.pugx.org/atom-php/uploader-bundle/downloads)](https://packagist.org/packages/atom-php/uploader-bundle)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/fdc56702-7096-48b8-9885-354f144938fa/mini.png)](https://insight.sensiolabs.com/projects/fdc56702-7096-48b8-9885-354f144938fa)
 
 ---
 
@@ -45,7 +46,7 @@ Symfony пакет, который обеспечивает сохранение
 #### Установка
 
 ```
-composer require atom-azimov/uploader-bundle
+composer require atom-php/uploader-bundle
 ```
 
 #### Включение

@@ -107,8 +107,8 @@ class RegisterMappingsCompiler implements CompilerPassInterface
 
         foreach ($metadataMap as $id => &$metadata) {
             $metadataDefinition = new Definition(FileMetadata::class, [
-                $metadata['file_getter'],
                 $metadata['file_setter'],
+                $metadata['file_getter'],
                 $metadata['uri_setter'],
                 $metadata['file_info_setter'],
                 $metadata['fs_prefix'],

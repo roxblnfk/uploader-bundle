@@ -26,7 +26,7 @@
     },
     "require": {
         "php": ">=5.5.9",
-        "atom-php/uploader": "~1.5.10"
+        "atom-php/uploader": "^1.5.10"
     },
     "require-dev": {
         "symfony/symfony": "~3.2",

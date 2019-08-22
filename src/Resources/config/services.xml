@@ -19,7 +19,8 @@
             <argument type="service" id="atom_uploader.dispatcher"/>
         </service>
 
-        <service id="atom_uploader.filesystem_adapter_repo" class="Atom\Uploader\Filesystem\FilesystemAdapterRepo">
+        <service id="atom_uploader.filesystem_adapter_repo" class="Atom\Uploader\Filesystem\FilesystemAdapterRepo"
+                 public="true">
             <argument type="collection"/> <!-- will be contained with filesystem adapters. -->
         </service>
 

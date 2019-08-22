@@ -17,7 +17,7 @@ class UniqueNamer extends \Atom\Uploader\Naming\UniqueNamer
     {
         $name = parent::name($file);
 
-        if ($file instanceof UploadedFile && empty($file->getExtension())) {
+        if ($file instanceof UploadedFile && !empty($file->getExtension())) {
             $name .= '.' . $this->escape($file->getClientOriginalExtension());
         }
 
